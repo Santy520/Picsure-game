@@ -1,5 +1,5 @@
 $(document).foundation();
-
+/** 
 function currentWeather(){
     var apiQuery = `https://api.openweathermap.org/data/2.5/weather?q=new york&appid=a34c2b8d2c8d04d52a0bced017c36070`
  
@@ -28,3 +28,4 @@ function currentWeather(){
          })
      }
  unsplash();
+ */

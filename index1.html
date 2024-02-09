@@ -30,7 +30,7 @@
     <div class="scores cell small-3">
       <a id="highscores-link">View High Scores</a>
     </div>
-    <div class="timer cell small-1" id="timer">
+    <div class="timer cell small-4" id="timer">
       Time: 75
     </div>
   </section>
@@ -79,11 +79,16 @@
             <p id="currentHumidity">Humidity: 53%</p>
             <label>Select Menu
               <select>
-
-                <option value="husker">Husker</option>
-                <option value="starbuck">Starbuck</option>
-                <option value="hotdog">Hot Dog</option>
-                <option value="apollo">Apollo</option>
+                <option value="newyork">New York</option>
+                <option value="chicago">Chicago</option>
+                <option value="sanfrancisco">San Francisco</option>
+                <option value="miami">Miami</option>
+                <option value="losangeles">Los Angeles</option>
+                <option value="detroit">Detroit</option>
+                <option value="philadelphia">Philadelphia</option>
+                <option value="dallas">Dallas</option>
+                <option value="boston">Boston</option>
+                <option value="seattle">Seattle</option>
               </select>
             </label>
           </div>
@@ -93,6 +98,19 @@
   </section>
 
 
+   
+</section>
+
+<section id="highscores" class="highscores-container grid-x align-center align-middle">
+  <div id="high-scores">
+      <h1 class="leaderboard">Leaderboard</h1>
+      <ul id="highscore" class="highscore-list"></ul>
+      <div class="controls">
+        <button id="restart-btn" class="cell small">Restart</button>
+        <button id="clear-btn" class="cell small">Clear Scores</button>
+    </div>
+  </div>
+</section>
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"></script>

@@ -3,7 +3,7 @@ $(document).foundation();
 let userName ='';
 
 //Listener to receive Username Input from HTML
-$('formEl').on('submit', function(){
+$('#formEl').on('submit', function(){
     userName = $('#userName').val();
     return userName;
 })

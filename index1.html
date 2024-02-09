@@ -1,45 +1,88 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css">
-    <link rel="stylesheet" href="style.css" />
-    <!-- <link rel="script" href="script.js" /> -->
-    <title>Test</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css">
+  <link rel="stylesheet" href="style1.css" />
+  <!-- <link rel="script" href="script.js" /> -->
+  <title>Test</title>
 </head>
 
 
 <body>
 
-    <header>
-        <div class="grid-x">
-            <div class="cell"><h1>Full width cell</h1></div>
-        </div> <!-- Closing tag for grid-x -->
-    </header>
+  <!-- .background changes head color -->
+  <!-- .grid-x is a class applied to a container element to define a horizontal grid -->
+  <!-- .cell is a class applied to define grid cells/columns -->
 
-    <!-- Full width cell is a header, need to center, add background color, add height -->
-
-    <!-- Button for modal, center on screen -->
-
-    <!--  -->
-
-    <button class="button" data-open="exampleModal1">Click me for a modal</button>
-
-    <div class="small reveal" id="exampleModal1" data-reveal>
-        <h1>TEST TEST.</h1>
-        <button class="close-button" data-close aria-label="Close modal" type="button">
-          <span aria-hidden="true">&times;</span>
-        </button>
+  <header>
+    <div class="grid-x">
+      <div class="cell background">
+        <h1 class="text-center">PicSure?</h1>
       </div>
+    </div>
+  </header>
 
-      <button class="close-button" data-close aria-label="Close modal" type="button">
-        <span aria-hidden="true">&times;</span>
-      </button>
+  <section id="game-elements">
+    <div class="scores float-left">
+      <a id="highscores-link">View High Scores</a>
+    </div>
+    <div class="float-right">
+      <p id="timer">Time: 75</p>
+    </div>
+  </section>
 
-    
-      <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"></script>
-      <script src="script.js"></script>
+  <!-- Centered button on the screen -->
+  <div class="grid-x align-center align-middle" id="playButtonContainer" style="height: 50vh;">
+    <button class="button" id="play-button" data-open="modal">Click to Play</button>
+  </div>
+
+<div id="modalPosition">
+  <div class="small reveal" data-append-to="div#modalPosition" id="modal" data-reveal>
+    <h1 class="text-center">Game Rules</h1>
+    <p class="text-center">Welcome to PicSure! The game where you have to guess a location based off of a picture and
+      current weather/timezone!
+      Please input your name to save the score and start the game. You will have 60 seconds to guess as many locations
+      as you can!</p>
+    <label for="username"></label>
+    <input id="username" type="text" placeholder="Please enter name">
+    <button class="button" id="startButton">Start</button>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</div>
+
+  <!-- Game container -->
+  <!-- cell small-12 medium-6 : .small-12 means that on small screens the card will take up
+  the entire screen, .medium-6 means that on medium/large screens the card will take up 50% of the screen -->
+
+
+    <div class="game-card grid-x align-center" id="game-container" style="display: none;">
+      <div class="cell small-12 medium-6">
+        <div class="radius bordered shadow card">
+          <img id="gameImage" src="https://images.unsplash.com/photo-1515963665762-77ef90e624fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NjE2NDd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MDcyNzA3NzR8&ixlib=rb-4.0.3&q=80&w=400" alt="Guess the City">
+          <div class="card-divider">
+            Where am I?
+          </div>
+          <div class="card-section">
+            <h4>Hints</h4>
+            <p id="currentTemp">Temp: 45</p>
+            <p id="currentHumidity">Humidity: 53%</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"></script>
+  <script src="script.js"></script>
+
 </body>
+
 </html>

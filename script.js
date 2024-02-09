@@ -50,8 +50,8 @@ function startGame(){
    var score = 0;
 
    //For testing create image array for locations
-   var locations = ['newyork','chicago','sanfrancisco', 'miami',
-                   'losangeles', 'detroit', 'philadelphia', 'dallas',
+   var locations = ['new york','chicago','san francisco', 'miami',
+                   'los angeles', 'detroit', 'philadelphia', 'dallas',
                    'boston', 'seattle']; 
    shuffleArray(locations);
    playGame(locations, index, score);
@@ -65,7 +65,13 @@ function startGame(){
 
 //Uses shuffled location array to get clues from APIs
 function playGame(array, i, score){
+    if(i == array.length){
+        i=0;
+    }
         let currentLocation = array[i];
+        //Retrieves random image and corresponding weather clues from APIs
+        fetchImage(currentLocation);
+        fetchClues(currentLocation);
         console.log(array);
         console.log(i);
 
@@ -124,6 +130,7 @@ function fetchClues(city){
         $('#currentTemp').text('Temperature: ' + currentTemp + 'F');
         $('#currentHumidity').text('Humidity: ' + currentHumidity + '%');
     })
+    return;
 }
 
 function fetchImage(city){
@@ -140,9 +147,31 @@ function fetchImage(city){
         console.log(currentImage);
         $('#gameImage').prop("src", currentImage); 
     })
+    return;
 }
 
-function resetHighscores (){
+function resetHighscores(){
     localStorage.clear();
     $('#highScores').css('display', 'none');
+}
+
+function goBack(){
+    $('#highScores').css('display', 'none');
+    $('#goBack').css('display', 'none');
+    $('#playButtonContainer').css('display', '');
+}
+
+function printHighscores(){
+    if(localStorage.length === null){
+        return;
+    }
+    else{
+        for (let i = 0; i<localStorage.length; i++) {
+            let name = localStorage.key(i);
+            let highScore = localStorage.getItem(localStorage.key(i))
+            let scoreli = document.createElement("li");
+            scoreli.textContent = 'Username: ' + name + ' Score: ' + highScore + ' ';
+            $('#highScore').append(scoreli);
+        }
+    }
 }

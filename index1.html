@@ -25,19 +25,25 @@
     </div>
   </header>
 
-  <section id="game-elements">
-    <div class="scores float-left">
+
+  <section class="game-elements grid-x grid-padding-x align-spaced">
+    <div class="scores cell small-3">
       <a id="highscores-link">View High Scores</a>
     </div>
-    <div class="float-right">
-      <p id="timer">Time: 75</p>
+    <div class="timer cell small-1" id="timer">
+      Time: 75
     </div>
   </section>
 
   <!-- Centered button on the screen -->
-  <div class="grid-x align-center align-middle" id="playButtonContainer" style="height: 50vh;">
+  <div class="grid-x align-center align-middle" id="playButtonContainer" style="height: 40vh;">
+    
+    <h3>Welcome to our website!</h3>
+    <p>We are glad to have you here.</p>
     <button class="button" id="play-button" data-open="modal">Click to Play</button>
+
   </div>
+
 
 <div id="modalPosition">
   <div class="small reveal" data-append-to="div#modalPosition" id="modal" data-reveal>
@@ -71,6 +77,20 @@
             <h4>Hints</h4>
             <p id="currentTemp">Temp: 45</p>
             <p id="currentHumidity">Humidity: 53%</p>
+            <label>Select Menu
+              <select>
+                <option value="newyork">New York</option>
+                <option value="chicago">Chicago</option>
+                <option value="sanfrancisco">San Francisco</option>
+                <option value="miami">Miami</option>
+                <option value="losangeles">Los Angeles</option>
+                <option value="detroit">Detroit</option>
+                <option value="philadelphia">Philadelphia</option>
+                <option value="dallas">Dallas</option>
+                <option value="boston">Boston</option>
+                <option value="seattle">Seattle</option>
+              </select>
+            </label>
           </div>
         </div>
       </div>

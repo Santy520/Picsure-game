@@ -9,3 +9,42 @@
 .timer {
     padding: 10px;
 } */
+
+  
+  #playButtonContainer {
+    background-color: #f0f0f0;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 50px;
+}
+
+
+.button {
+    background-color: #585a5f; 
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+.button:hover {
+    background-color: #2d6ac0;
+}
+.game-elements {
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ccc;
+    color: #333;
+    padding: 10px;
+    text-align: center;
+}

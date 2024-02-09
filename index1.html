@@ -25,12 +25,12 @@
     </div>
   </header>
 
-  <section id="game-elements">
-    <div class="scores float-left">
+  <section class="game-elements grid-x grid-padding-x align-spaced">
+    <div class="scores cell small-3">
       <a id="highscores-link">View High Scores</a>
     </div>
-    <div class="float-right">
-      <p id="timer">Time: 75</p>
+    <div class="timer cell small-1" id="timer">
+      Time: 75
     </div>
   </section>
 
@@ -71,6 +71,14 @@
             <h4>Hints</h4>
             <p id="currentTemp">Temp: 45</p>
             <p id="currentHumidity">Humidity: 53%</p>
+            <label>Select Menu
+              <select>
+                <option value="husker">Husker</option>
+                <option value="starbuck">Starbuck</option>
+                <option value="hotdog">Hot Dog</option>
+                <option value="apollo">Apollo</option>
+              </select>
+            </label>
           </div>
         </div>
       </div>

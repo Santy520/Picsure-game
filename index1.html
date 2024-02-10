@@ -36,11 +36,15 @@
   </section>
 
   <!-- Centered button on the screen -->
-  <div class="grid-x align-center align-middle" id="playButtonContainer" style="height: 40vh;">
+  <div class="grid-x align-center align-middle" id="playButtonContainer" style="height: 50vh;">
     
     <h3>Welcome to our website!</h3>
     <p>We are glad to have you here.</p>
-    <button class="button" id="play-button" data-open="modal">Click to Play</button>
+    <form action="" class="formEl">
+      <label for="userName">User Name</label>
+      <input type="text" id="userName">
+      <button type="submit" class="button" id="play-button" data-open="modal">Click to Play</button>
+    </form>
 
   </div>
 
@@ -91,6 +95,9 @@
                 <option value="seattle">Seattle</option>
               </select>
             </label>
+            <button id="answer-button">
+              Next
+            </button>
           </div>
         </div>
       </div>

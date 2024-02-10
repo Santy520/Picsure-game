@@ -3,10 +3,10 @@ $(document).foundation();
 let userName ='';
 
 //Listener to receive Username Input from HTML
-$('formEl').on('submit', function(){
-    userName = $('#userName').val();
-    return userName;
-})
+// $('formEl').on('submit', function(){
+//     userName = $('#userName').val();
+//     return userName;
+// })
 
 
 //Sets timer to 60 seconds and closes game upon completion
@@ -31,10 +31,13 @@ function timer(){
 //Play-Button event listener
 $(document).ready(function(){
     
-    $('#play-button').on('click', function(e){
+    // $('#play-button').on('click', function(e){
+    $('.formEl').on('submit', function(e){
         e.preventDefault();
         e.stopPropagation();
+        userName = $('#userName').val();
         startGame();
+        return userName;
     }
 )
 });
@@ -75,8 +78,9 @@ function playGame(array, i, score){
         console.log(array);
         console.log(i);
 
-        $('#answer-button').on('submit', function (e){
-            e.preventDefault();
+        // $('#answer-button').on('submit', function (e){
+        $('#answer-button').on('click', function (e){
+        e.preventDefault();
             e.stopPropagation();
 
             //Bring in answer choice from form

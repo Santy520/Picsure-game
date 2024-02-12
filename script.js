@@ -2,13 +2,6 @@ $(document).foundation();
 
 let userName ='';
 
-//Listener to receive Username Input from HTML
-// $('formEl').on('submit', function(){
-//     userName = $('#userName').val();
-//     return userName;
-// })
-
-
 //Sets timer to 60 seconds and closes game upon completion
 function timer(){
     var timeLeft = 60;
@@ -19,14 +12,11 @@ function timer(){
       if(timeLeft == 0) {
         clearInterval(timerInterval);
         $('#game-container').css('display', 'none');
-       //Show Scoreboard
-        return timeLeft = 0;
+        return printHighscores();
       }
   
     }, 1000);
 }
-
-
 
 //Play-Button event listener
 $(document).ready(function(){
@@ -36,72 +26,70 @@ $(document).ready(function(){
         e.preventDefault();
         e.stopPropagation();
         userName = $('#userName').val();
-        startGame();
-        return userName;
+        console.log(userName);
+        startGame(userName);
     }
 )
 });
 
-
-function startGame(){
-    
+function startGame(userName){
    $('#playButtonContainer').css('display', 'none');
    $('#game-container').css('display', '');
    console.log("StartGame initialized");
    timer();
    var index = 0;
    var score = 0;
-
-   //For testing create image array for locations
    var locations = ['new york','chicago','san francisco', 'miami',
-                   'los angeles', 'detroit', 'philadelphia', 'dallas',
-                   'boston', 'seattle']; 
+                     'los angeles', 'detroit', 'philadelphia', 'dallas',
+                     'boston', 'seattle']; 
    shuffleArray(locations);
-   playGame(locations, index, score);
+   playGame(locations, index, score, userName);
 }
-
-
-
-  
-
 
 
 //Uses shuffled location array to get clues from APIs
-function playGame(array, i, score){
-    if(i == array.length){
-        i=0;
+function playGame(locations, index, score, userName){
+    let array = locations;
+    let j = index;
+    $('#default').prop('selected');
+    localStorage.setItem(userName, score);
+    console.log(userName + ": " + localStorage.getItem(userName));
+    $('#currentScore').text('Score: ' + score);
+    if(j == array.length){
+        j=0;
     }
-        let currentLocation = array[i];
+
+        //let currentLocation = array[i];
+        console.log('Current Location: ' + array[j]);
         //Retrieves random image and corresponding weather clues from APIs
-        fetchImage(currentLocation);
-        fetchClues(currentLocation);
-        console.log(array);
-        console.log(i);
+        console.log('Current Index: ' + j);
+        //fetchImage(array[i]);
+        //fetchClues(array[i]);
 
+       
+       
         // $('#answer-button').on('submit', function (e){
-        $('#answer-button').on('click', function (e){
-        e.preventDefault();
-            e.stopPropagation();
+        $('#answers').on('change', function (e){
+        e.stopPropagation();
+         let choice = $('#answers').val();
 
-            //Bring in answer choice from form
-            let choice = $('#choice').val();
-            if (currentLocation === choice){
-                score++;
-                i++;
-                localStorage.setItem(userName, score);
-                console.log('Correct! ' + 'Index: ' + i + ' Score: ' + score);
-                playGame(array, i, score);
-            }
-            else {
-                //Display InCorrect Answer!
-                i++;
-                localStorage.setItem(userName, score);
-                playGame(array, i, score);
-            }
-        });     
-
+         //Bring in answer choice from form
+         console.log('Choice: ' + choice);
+         if (array[j] === choice){
+             score++;
+             localStorage.setItem(userName, score);
+             console.log('Correct! ' + 'Index: ' + j + ' Score: ' + score);
+         }
+         else {
+             //Display InCorrect Answer!
+             console.log('Incorrect!');
+             localStorage.setItem(userName, score);
+         }
+         j++;
+         return playGame(array, j, score, userName);
+        });
+            
 }
-
 
 
 //Shuffles items in the location array to randomize choices for current game. 
@@ -157,25 +145,34 @@ function fetchImage(city){
 function resetHighscores(){
     localStorage.clear();
     $('#highScores').css('display', 'none');
+    return;
 }
+
+$('#resetScores').on('click', resetHighscores());
 
 function goBack(){
     $('#highScores').css('display', 'none');
-    $('#goBack').css('display', 'none');
     $('#playButtonContainer').css('display', '');
+    return;
 }
 
+$('#goBack').on('click', goBack());
+
 function printHighscores(){
+    $('#highscores').css('display', '');
     if(localStorage.length === null){
         return;
     }
     else{
         for (let i = 0; i<localStorage.length; i++) {
             let name = localStorage.key(i);
-            let highScore = localStorage.getItem(localStorage.key(i))
+            console.log('Storage Key:'+ '['+ i + '] ' + name)
+            let highScore = localStorage.getItem(localStorage.key(i));
+            console.log('Key Value:'+ '['+ i + '] ' + highScore);
             let scoreli = document.createElement("li");
             scoreli.textContent = 'Username: ' + name + ' Score: ' + highScore + ' ';
-            $('#highScore').append(scoreli);
+            $('#highscore').append(scoreli);
         }
     }
+    return;
 }

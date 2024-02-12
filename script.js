@@ -66,28 +66,30 @@ function playGame(locations, index, score, userName){
         //fetchImage(array[i]);
         //fetchClues(array[i]);
 
-       
+       function onSelect(){
+        let choice = $('#answers').val();
+
+        //Bring in answer choice from form
+        console.log('Choice: ' + choice);
+        if (array[j] === choice){
+            score++;
+            localStorage.setItem(userName, score);
+            console.log('Correct! ' + 'Index: ' + j + ' Score: ' + score);
+        }
+        else {
+            //Display InCorrect Answer!
+            console.log('Incorrect!');
+            localStorage.setItem(userName, score);
+        }
+        j++;
+        $('#answers').off('change', onSelect);
+        return playGame(array, j, score, userName);
+       }
        
         // $('#answer-button').on('submit', function (e){
-        $('#answers').on('change', function (e){
-        e.stopPropagation();
-         let choice = $('#answers').val();
-
-         //Bring in answer choice from form
-         console.log('Choice: ' + choice);
-         if (array[j] === choice){
-             score++;
-             localStorage.setItem(userName, score);
-             console.log('Correct! ' + 'Index: ' + j + ' Score: ' + score);
-         }
-         else {
-             //Display InCorrect Answer!
-             console.log('Incorrect!');
-             localStorage.setItem(userName, score);
-         }
-         j++;
-         return playGame(array, j, score, userName);
-        });
+        $('#answers').on('change', onSelect);
+      
+    
             
 }
 

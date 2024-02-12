@@ -42,8 +42,8 @@
     <p>We are glad to have you here.</p>
     <form action="" class="formEl">
       <label for="userName">User Name</label>
-      <input type="text" id="userName">
-      <button type="submit" class="button" id="play-button" data-open="modal">Click to Play</button>
+      <input type="text" id="userName" placeholder="Enter Username">
+      <button type="submit" class="button" id="play-button">Click to Play</button>
     </form>
 
   </div>
@@ -53,12 +53,7 @@
   <div class="small reveal" data-append-to="div#modalPosition" id="modal" data-reveal>
     <h1 class="text-center">Game Rules</h1>
     <p class="text-center">Welcome to PicSure! The game where you have to guess a location based off of a picture and
-      current weather/timezone!
-      Please input your name to save the score and start the game. You will have 60 seconds to guess as many locations
-      as you can!</p>
-    <label for="username"></label>
-    <input id="username" type="text" placeholder="Please enter name">
-    <button class="button" id="startButton">Start</button>
+      current weather/timezone! You will have 60 seconds to guess as many locations as you can!</p>
     <button class="close-button" data-close aria-label="Close modal" type="button">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -70,10 +65,10 @@
   the entire screen, .medium-6 means that on medium/large screens the card will take up 50% of the screen -->
 
 
-    <div class="game-card grid-x align-center" id="game-container" style="display: none;">
+    <div class="game-card grid-x align-center" id="game-container" style="display: none">
       <div class="cell small-12 medium-6">
         <div class="radius bordered shadow card">
-          <img id="gameImage" src="https://images.unsplash.com/photo-1515963665762-77ef90e624fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NjE2NDd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MDcyNzA3NzR8&ixlib=rb-4.0.3&q=80&w=400" alt="Guess the City">
+          <img id="gameImage" src="" alt="Guess the City">
           <div class="card-divider">
             Where am I?
           </div>
@@ -81,23 +76,23 @@
             <h4>Hints</h4>
             <p id="currentTemp">Temp: 45</p>
             <p id="currentHumidity">Humidity: 53%</p>
-            <label>Select Menu
-              <select>
-                <option value="newyork">New York</option>
-                <option value="chicago">Chicago</option>
-                <option value="sanfrancisco">San Francisco</option>
-                <option value="miami">Miami</option>
-                <option value="losangeles">Los Angeles</option>
-                <option value="detroit">Detroit</option>
-                <option value="philadelphia">Philadelphia</option>
-                <option value="dallas">Dallas</option>
-                <option value="boston">Boston</option>
-                <option value="seattle">Seattle</option>
+            <p id="currentScore"></p>
+            <label>
+              <select id="answers">
+                <option id =default selected>Select a City</option>
+                <option class="dropdown" value="new york">New York</option>
+                <option class="dropdown" value="chicago">Chicago</option>
+                <option class="dropdown" value="san francisco">San Francisco</option>
+                <option class="dropdown" value="miami">Miami</option>
+                <option class="dropdown" value="los angeles">Los Angeles</option>
+                <option class="dropdown" value="detroit">Detroit</option>
+                <option class="dropdown" value="philadelphia">Philadelphia</option>
+                <option class="dropdown" value="dallas">Dallas</option>
+                <option class="dropdown" value="boston">Boston</option>
+                <option class="dropdown" value="seattle">Seattle</option>
               </select>
             </label>
-            <button id="answer-button">
-              Next
-            </button>
+            <button id="answer-button" style="display: none;">  Next </button>
           </div>
         </div>
       </div>
@@ -108,13 +103,14 @@
    
 </section>
 
-<section id="highscores" class="highscores-container grid-x align-center align-middle">
+<section id="highscores" class="highscores-container grid-x align-center align-middle" style="display: none">
   <div id="high-scores">
       <h1 class="leaderboard">Leaderboard</h1>
-      <ul id="highscore" class="highscore-list"></ul>
+      <ul id="highscore" class="highscore-list">
+      </ul>
       <div class="controls">
-        <button id="restart-btn" class="cell small">Restart</button>
-        <button id="clear-btn" class="cell small">Clear Scores</button>
+        <button id="goBack" class="cell small">Restart</button>
+        <button id="resetScores" class="cell small">Clear Scores</button>
     </div>
   </div>
 </section>

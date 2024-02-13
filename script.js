@@ -4,7 +4,7 @@ let userName ='';
 
 //Sets timer to 60 seconds and closes game upon completion
 function timer(){
-    var timeLeft = 60;
+    var timeLeft = 5;
     var timerInterval = setInterval(function() {
       timeLeft--;
       $('#timer').text("Seconds remaining: " + timeLeft);
@@ -63,8 +63,9 @@ function playGame(locations, index, score, userName){
         console.log('Current Location: ' + array[j]);
         //Retrieves random image and corresponding weather clues from APIs
         console.log('Current Index: ' + j);
-        //fetchImage(array[i]);
-        //fetchClues(array[i]);
+        fetchImage(array[j]);
+        fetchClues(array[j]);
+        $('select option:contains("Select a City")').prop('selected',true);
 
        function onSelect(){
         let choice = $('#answers').val();
@@ -146,19 +147,19 @@ function fetchImage(city){
 
 function resetHighscores(){
     localStorage.clear();
-    $('#highScores').css('display', 'none');
+    $('li').remove();
     return;
 }
 
-$('#resetScores').on('click', resetHighscores());
+$('#resetScores').on('click', resetHighscores);
 
 function goBack(){
-    $('#highScores').css('display', 'none');
+    $('#highscores').css('display', 'none');
     $('#playButtonContainer').css('display', '');
     return;
 }
 
-$('#goBack').on('click', goBack());
+$('#goBack').on('click', goBack);
 
 function printHighscores(){
     $('#highscores').css('display', '');
@@ -172,7 +173,8 @@ function printHighscores(){
             let highScore = localStorage.getItem(localStorage.key(i));
             console.log('Key Value:'+ '['+ i + '] ' + highScore);
             let scoreli = document.createElement("li");
-            scoreli.textContent = 'Username: ' + name + ' Score: ' + highScore + ' ';
+            scoreli.textContent = name + ' = ' + highScore + ' ';
+            $('#highscore').css('list-style-type', 'none');
             $('#highscore').append(scoreli);
         }
     }

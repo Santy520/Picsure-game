@@ -163,6 +163,7 @@ $('#goBack').on('click', goBack);
 
 function printHighscores(){
     $('#highscores').css('display', '');
+    $('li').remove();
     if(localStorage.length === null){
         return;
     }

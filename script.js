@@ -4,7 +4,7 @@ let userName ='';
 
 //Sets timer to 60 seconds and closes game upon completion
 function timer(){
-    var timeLeft = 5;
+    var timeLeft = 25;
     var timerInterval = setInterval(function() {
       timeLeft--;
       $('#timer').text("Seconds remaining: " + timeLeft);

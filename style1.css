@@ -1,5 +1,10 @@
+body {
+    background-color: #d4d5da;
+}
+
+
 .background {
-    background-color: grey;
+    background-color: #708090;
 }
 
 /* .scores {
@@ -12,8 +17,8 @@
 
   
   #playButtonContainer {
-    background-color: #f0f0f0;
-    border: 2px solid #ccc;
+    background-color: #708090;
+    border: 2px solid #121212;
     border-radius: 5px;
     padding: 20px;
     width: 300px;
@@ -24,9 +29,9 @@
 
 
 .button {
-    background-color: #585a5f; 
+    background-color: #10346f; 
     border: none;
-    color: white;
+    color: rgb(249, 250, 248);
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
@@ -39,12 +44,31 @@
 
 
 .button:hover {
-    background-color: #2d6ac0;
+    background-color: #989a98;
 }
 .game-elements {
-    background-color: #f0f0f0;
-    border-bottom: 1px solid #ccc;
-    color: #333;
+    background-color: #10346f;
+    border-bottom: 1px solid #a80d0d;
+    color: #f8f0f0;
     padding: 10px;
     text-align: center;
+}
+
+#highscores-link {
+    color: rgb(221, 215, 215);
+}
+
+#highscores {
+    background-color: #708090;
+    border: 2px solid #121212;
+    border-radius: 5px;
+    padding: 20px;
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 50px;
+}
+
+h1, h3, .welcomParagraph{
+    color:rgb(221, 215, 215)
 }

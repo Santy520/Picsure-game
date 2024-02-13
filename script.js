@@ -1,8 +1,9 @@
+//Required for Foundation Framework functionality to work
 $(document).foundation();
 
 let userName ='';
 
-//Sets timer to 60 seconds and closes game upon completion
+//Sets timer closes game elements upon completion
 function timer(){
     var timeLeft = 25;
     var timerInterval = setInterval(function() {
@@ -18,10 +19,10 @@ function timer(){
     }, 1000);
 }
 
-//Play-Button event listener
+//Requires page load to be complete prior to game function
 $(document).ready(function(){
     
-    // $('#play-button').on('click', function(e){
+    //Retrieves the Username and initiaties the game when form is submitted
     $('.formEl').on('submit', function(e){
         e.preventDefault();
         e.stopPropagation();
@@ -32,6 +33,7 @@ $(document).ready(function(){
 )
 });
 
+//Starts the game and is intialized on player name 'submit'
 function startGame(userName){
    $('#playButtonContainer').css('display', 'none');
    $('#game-container').css('display', '');
@@ -42,12 +44,13 @@ function startGame(userName){
    var locations = ['new york','chicago','san francisco', 'miami',
                      'los angeles', 'detroit', 'philadelphia', 'dallas',
                      'boston', 'seattle']; 
+   //Randomizes possible locations into a new array                  
    shuffleArray(locations);
    playGame(locations, index, score, userName);
 }
 
 
-//Uses shuffled location array to get clues from APIs
+//Game logic, API intializers and sets localStorage for userNames and scores
 function playGame(locations, index, score, userName){
     let array = locations;
     let j = index;
@@ -59,18 +62,19 @@ function playGame(locations, index, score, userName){
         j=0;
     }
 
-        //let currentLocation = array[i];
         console.log('Current Location: ' + array[j]);
-        //Retrieves random image and corresponding weather clues from APIs
         console.log('Current Index: ' + j);
+        //Retrieves random image and corresponding weather clues from APIs
+
         fetchImage(array[j]);
         fetchClues(array[j]);
+        //Removes event listner from answer dropdown to prevent duplication
         $('select option:contains("Select a City")').prop('selected',true);
 
        function onSelect(){
         let choice = $('#answers').val();
 
-        //Bring in answer choice from form
+        //Bring in answer choice from answer dropdown
         console.log('Choice: ' + choice);
         if (array[j] === choice){
             score++;
@@ -78,7 +82,6 @@ function playGame(locations, index, score, userName){
             console.log('Correct! ' + 'Index: ' + j + ' Score: ' + score);
         }
         else {
-            //Display InCorrect Answer!
             console.log('Incorrect!');
             localStorage.setItem(userName, score);
         }
@@ -86,8 +89,7 @@ function playGame(locations, index, score, userName){
         $('#answers').off('change', onSelect);
         return playGame(array, j, score, userName);
        }
-       
-        // $('#answer-button').on('submit', function (e){
+       //Event listener for the answer dropdown
         $('#answers').on('change', onSelect);
       
     
@@ -106,11 +108,13 @@ function shuffleArray(array) {
     return array;
 }
 
+//Converts temp in Openweather API from Kelvin to Fahrenheit for display
 function convertTemp(temp){
     let fahrenheit = (temp - 273.15)*1.8 + 32;
     return fahrenheit;
 }
 
+//Open Weather API retrieves context clues for current location
 function fetchClues(city){
     let apiKeyWeather = 'a34c2b8d2c8d04d52a0bced017c36070';
     let weatherRequest = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKeyWeather;
@@ -128,6 +132,7 @@ function fetchClues(city){
     return;
 }
 
+//Unsplash API retrieves a single random image from the specified city
 function fetchImage(city){
 
     let apiKeyUnsplash = '6ZuknqkaIj1xSrnF1lxmK1vVqUMZyAtTAOR4kLUmdac';
@@ -145,22 +150,27 @@ function fetchImage(city){
     return;
 }
 
+//Clears highscores that are printed
 function resetHighscores(){
     localStorage.clear();
     $('li').remove();
     return;
 }
 
+//Listener on reset scores button
 $('#resetScores').on('click', resetHighscores);
 
+//Reinitializes the game to allow user to play again
 function goBack(){
     $('#highscores').css('display', 'none');
     $('#playButtonContainer').css('display', '');
     return;
 }
 
+//Event listner on goBack button 
 $('#goBack').on('click', goBack);
 
+//Prints the scores from localStorage. Usernames are saved as keys and their values are their score
 function printHighscores(){
     $('#highscores').css('display', '');
     $('li').remove();

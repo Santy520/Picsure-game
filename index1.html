@@ -26,18 +26,29 @@
   </header>
 
 
-  <section class="game-elements grid-x grid-padding-x align-spaced">
-    <div class="scores cell small-3">
-      <a id="highscores-link">View High Scores</a>
+  <section class="game-elements grid-x grid-padding-x align-center-middle">
+    <div class="button-container cell small-4 text-center">
+      <button class="button" data-open="modal">Game Rules</button>
     </div>
-    <div class="timer cell small-4" id="timer">
+    <div id="modalPosition">
+      <div class="small reveal" data-append-to="div#modalPosition" id="modal" data-reveal>
+        <h1 class="text-center">Game Rules</h1>
+        <p class="text-center">Welcome to PicSure! The game where you have to guess a location based off of a picture
+          and
+          current weather/timezone! You will have 60 seconds to guess as many locations as you can!</p>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+    <div class="timer cell small-4 text-center" id="timer">
       Time: 75
     </div>
   </section>
 
   <!-- Centered button on the screen -->
   <div class="grid-x align-center align-middle" id="playButtonContainer" style="height: 50vh;">
-    
+
     <h3>Welcome to our website!</h3>
     <p>We are glad to have you here.</p>
     <form action="" class="formEl">
@@ -49,71 +60,62 @@
   </div>
 
 
-<div id="modalPosition">
-  <div class="small reveal" data-append-to="div#modalPosition" id="modal" data-reveal>
-    <h1 class="text-center">Game Rules</h1>
-    <p class="text-center">Welcome to PicSure! The game where you have to guess a location based off of a picture and
-      current weather/timezone! You will have 60 seconds to guess as many locations as you can!</p>
-    <button class="close-button" data-close aria-label="Close modal" type="button">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-</div>
+
 
   <!-- Game container -->
   <!-- cell small-12 medium-6 : .small-12 means that on small screens the card will take up
   the entire screen, .medium-6 means that on medium/large screens the card will take up 50% of the screen -->
 
 
-    <div class="game-card grid-x align-center" id="game-container" style="display: none">
-      <div class="cell small-12 medium-6">
-        <div class="radius bordered shadow card">
-          <img id="gameImage" src="" alt="Guess the City">
-          <div class="card-divider">
-            Where am I?
-          </div>
-          <div class="card-section">
-            <h4>Hints</h4>
-            <p id="currentTemp">Temp: 45</p>
-            <p id="currentHumidity">Humidity: 53%</p>
-            <p id="currentScore"></p>
-            <label>
-              <select id="answers">
-                <option id =default selected>Select a City</option>
-                <option class="dropdown" value="new york">New York</option>
-                <option class="dropdown" value="chicago">Chicago</option>
-                <option class="dropdown" value="san francisco">San Francisco</option>
-                <option class="dropdown" value="miami">Miami</option>
-                <option class="dropdown" value="los angeles">Los Angeles</option>
-                <option class="dropdown" value="detroit">Detroit</option>
-                <option class="dropdown" value="philadelphia">Philadelphia</option>
-                <option class="dropdown" value="dallas">Dallas</option>
-                <option class="dropdown" value="boston">Boston</option>
-                <option class="dropdown" value="seattle">Seattle</option>
-              </select>
-            </label>
-            <button id="answer-button" style="display: none;">  Next </button>
-          </div>
+  <div class="game-card grid-x align-center" id="game-container" style="display: none">
+    <div class="cell small-12 medium-6">
+      <div class="radius bordered shadow card">
+        <img id="gameImage" src="" alt="Guess the City">
+        <div class="card-divider">
+          Where am I?
+        </div>
+        <div class="card-section">
+          <h4>Hints</h4>
+          <p id="currentTemp">Temp: 45</p>
+          <p id="currentHumidity">Humidity: 53%</p>
+          <p id="currentScore"></p>
+          <label>
+            <select id="answers">
+              <option id=default selected>Select a City</option>
+              <option class="dropdown" value="new york">New York</option>
+              <option class="dropdown" value="chicago">Chicago</option>
+              <option class="dropdown" value="san francisco">San Francisco</option>
+              <option class="dropdown" value="miami">Miami</option>
+              <option class="dropdown" value="los angeles">Los Angeles</option>
+              <option class="dropdown" value="detroit">Detroit</option>
+              <option class="dropdown" value="philadelphia">Philadelphia</option>
+              <option class="dropdown" value="dallas">Dallas</option>
+              <option class="dropdown" value="boston">Boston</option>
+              <option class="dropdown" value="seattle">Seattle</option>
+            </select>
+          </label>
+          <button id="answer-button" style="display: none;"> Next </button>
         </div>
       </div>
     </div>
+  </div>
   </section>
 
 
-   
-</section>
 
-<section id="highscores" class="highscores-container grid-x align-center align-middle" style="display: none">
-  <div id="high-scores">
+  </section>
+
+  <section id="highscores" class="highscores-container grid-x align-center align-middle" style="display: none">
+    <div id="high-scores">
       <h1 class="leaderboard">Leaderboard</h1>
       <ul id="highscore" class="highscore-list">
       </ul>
       <div class="controls">
-        <button id="goBack" class="cell small">Restart</button>
-        <button id="resetScores" class="cell small">Clear Scores</button>
+        <button type="button" class="button" id="goBack" class="cell small">Restart</button>
+        <button type="button" class="button" id="resetScores" class="cell small">Clear Scores</button>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"></script>

@@ -6,13 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css">
   <link rel="stylesheet" href="style1.css" />
-  <!-- <link rel="script" href="script.js" /> -->
-  <title>Test</title>
+  <title>PicSure?</title>
 </head>
-
-
 <body>
-
   <!-- .background changes head color -->
   <!-- .grid-x is a class applied to a container element to define a horizontal grid -->
   <!-- .cell is a class applied to define grid cells/columns -->
@@ -34,10 +30,9 @@
       <div class="small reveal" data-append-to="div#modalPosition" id="modal" data-reveal>
         <h1 class="text-center">Game Rules</h1>
         <p class="text-center">Welcome to PicSure! The game where you have to guess a location based off of a picture
-          and
-          current weather/timezone! You will have 60 seconds to guess as many locations as you can!</p>
+          and current weather/timezone! You will have to guess as many as you can before the timer runs out!</p>
         <button class="close-button" data-close aria-label="Close modal" type="button">
-          <span aria-hidden="true">&times;</span>
+          <span id="modalClose" aria-hidden="true">&times;</span>
         </button>
       </div>
     </div>
@@ -53,14 +48,11 @@
     <p class="welcomParagraph">We are glad to have you here.</p>
     <form action="" class="formEl">
       <label style="color: rgb(221, 215, 215);" for="userName">User Name</label>
-      <input type="text" id="userName" placeholder="Enter Username">
+      <input type="text" id="userName" placeholder="Enter Username" required>
       <button type="submit" class="button" id="play-button">Click to Play</button>
     </form>
 
   </div>
-
-
-
 
   <!-- Game container -->
   <!-- cell small-12 medium-6 : .small-12 means that on small screens the card will take up
@@ -100,8 +92,6 @@
     </div>
   </div>
   </section>
-
-
 
   </section>
 
